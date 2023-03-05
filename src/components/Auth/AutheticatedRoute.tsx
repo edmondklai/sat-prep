@@ -19,7 +19,6 @@ export const AuthenticatedRoute: React.FC<Props> = ({ children }) => {
   }
 
   const onSubmit = () => {
-    console.log({ password, PASSWORD })
     if (password === PASSWORD) {
       setLoggedIn(() => {
         return { loggedIn: true }
