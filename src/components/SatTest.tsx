@@ -30,7 +30,7 @@ export const SatTest = () => {
         <>
           <HeaderComp sectionNumber={1} />
           <Countdown
-            date={startDate.current + 10000}
+            date={startDate.current + 1000000}
             renderer={renderer}
             onComplete={() => {
               setTest((oldTest) => {

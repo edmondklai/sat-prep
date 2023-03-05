@@ -1,6 +1,5 @@
 import { AuthenticatedRoute } from '@/components/Auth/AutheticatedRoute';
 import Button from '@mui/material/Button';
-import Input from '@mui/material/Input';
 import { useRouter } from 'next/router';
 import { Layout } from '../../components/Layout/Layout'
 
