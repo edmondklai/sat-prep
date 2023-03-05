@@ -7,8 +7,10 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Button from '@mui/material/Button';
+import { RefObject } from 'react';
+import Countdown from 'react-countdown';
 
-export const BottomNav = () => {
+export const BottomNav = ({ clockRef }: { clockRef: RefObject<Countdown> }) => {
   const [test, setTest] = useRecoilState(testState);
 
   const onBack = () => {
@@ -42,6 +44,7 @@ export const BottomNav = () => {
   }
 
   const onFinish = () => {
+    clockRef.current?.getApi().stop()
     calculateCorrectAnswers()
     setTest((oldTest) => {
       return {

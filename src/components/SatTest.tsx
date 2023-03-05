@@ -1,5 +1,5 @@
 import { testState } from '@/state/TestState';
-import Countdown from "react-countdown";
+import Countdown, { zeroPad } from "react-countdown";
 import { useRecoilState } from 'recoil';
 import Problems from '../data/test.json';
 import { BottomNav } from './BottomNav';
@@ -7,9 +7,9 @@ import { HeaderComp } from './HeaderComp';
 import { Problem } from './Problem';
 import { TestCompleted } from './TestCompleted';
 import { useRef } from 'react';
-import { Layout } from '../components/Layout/Layout';
+import { Layout } from './Layout/Layout';
 
-export const Container = () => {
+export const SatTest = () => {
   const [test, setTest] = useRecoilState(testState)
 
   const renderer = ({ hours, minutes, seconds, completed }: {
@@ -17,10 +17,11 @@ export const Container = () => {
   }) => {
     if (completed) {
     } else {
-      return <span>{minutes}:{seconds.toString().padStart(2, '0')}</span>;
+      return <span>{zeroPad(minutes)}:{zeroPad(seconds)}</span>;
     }
   };
 
+  const clockRef = useRef<Countdown>(null);
   const startDate = useRef(Date.now());
 
   return (
@@ -29,13 +30,14 @@ export const Container = () => {
         <>
           <HeaderComp sectionNumber={1} />
           <Countdown
-            date={startDate.current + 20000}
+            date={startDate.current + 10000}
             renderer={renderer}
             onComplete={() => {
               setTest((oldTest) => {
                 return { ...oldTest, completed: true }
               })
             }}
+            ref={clockRef}
           />
           <Problem
             problem={Problems[test.currentQuestion - 1]}
@@ -46,7 +48,7 @@ export const Container = () => {
             <TestCompleted />
           </>
         }
-        <BottomNav />
+        <BottomNav clockRef={clockRef} />
       </div>
     </Layout>
   )

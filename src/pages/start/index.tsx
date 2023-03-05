@@ -2,10 +2,11 @@ import Button from '@mui/material/Button';
 import { useRouter } from 'next/router';
 import { Layout } from '../../components/Layout/Layout'
 
-const Start = () => {
+const StartPage = () => {
   const { push } = useRouter();
   const onClick = () => {
-    push('/')
+    console.log('click')
+    push('/sat-test')
   }
 
   return (
@@ -15,8 +16,7 @@ const Start = () => {
         <Button onClick={onClick}>Click to start</Button>
       </div>
     </Layout>
-
   )
 }
 
-export default Start;
+export default StartPage;
