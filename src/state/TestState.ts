@@ -7,6 +7,7 @@ type TestType = {
   currentQuestion: number,
   answers: Answer,
   completed: boolean,
+  correctAnswers: number,
 }
 
 export const testState = atom<TestType>({
@@ -14,6 +15,7 @@ export const testState = atom<TestType>({
   default: {
     currentQuestion: 1,
     answers: {},
-    completed: false
+    completed: false,
+    correctAnswers: 0
   } as TestType, // default value (aka initial value)
 });

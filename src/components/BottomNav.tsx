@@ -17,6 +17,25 @@ export const BottomNav = () => {
     })
   }
 
+  const calculateCorrectAnswers = () => {
+    console.log(test, Test)
+    let correctAnswers = 0;
+    Object.entries(test.answers).map(([key, value]) => {
+      const problem = Test.find(ele => ele.number === Number(key))
+      if (problem?.answer === value) {
+        correctAnswers += 1
+      }
+    })
+
+    setTest((oldTest) => {
+      return {
+        ...oldTest,
+        completed: true,
+        correctAnswers
+      }
+    })
+  }
+
   const onNext = () => {
     setTest((oldTest) => {
       return { ...oldTest, currentQuestion: oldTest.currentQuestion + 1 }
@@ -24,6 +43,7 @@ export const BottomNav = () => {
   }
 
   const onFinish = () => {
+    calculateCorrectAnswers()
     setTest((oldTest) => {
       return {
         ...oldTest,
@@ -62,8 +82,15 @@ export const BottomNav = () => {
       {
         !test.completed && <>
           <Button onClick={onBack} disabled={test.currentQuestion === 1}>Back</Button>
-          {test.currentQuestion !== 2 && <Button onClick={onNext} disabled={test.currentQuestion === 2}>Next</Button>}
-          {test.currentQuestion === 2 && <Button onClick={onFinish}>Finish</Button>}
+          {test.currentQuestion < Test.length &&
+            <Button
+              onClick={onNext}
+            >
+              Next
+            </Button>
+          }
+          {test.currentQuestion === Test.length &&
+            <Button onClick={onFinish}>Finish</Button>}
         </>
       }
     </div>

@@ -3,6 +3,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
+import Test from '../data/test.json';
 
 import { useRecoilState } from "recoil"
 
@@ -32,7 +33,7 @@ export const Problem = ({ problem }: { problem: Problem }) => {
         ...test,
         answers: {
           ...test.answers, [number]: e.target.value
-        }
+        },
       }
     })
   }
@@ -62,7 +63,6 @@ export const Problem = ({ problem }: { problem: Problem }) => {
             })}
           </RadioGroup>
         </FormControl>
-
       </div>
     </div >
   )

@@ -58,5 +58,35 @@
       }
     ],
     "answer": "D"
+  },
+  {
+    "number": 3,
+    "question": [
+      {
+        "text": "“Ghosts of the Old Year” is an early 1900s poem by James Weldon Johnson. In the poem, the speaker describes experiencing an ongoing cycle of anticipation followed by regretful reflection: ______"
+      },
+      {
+        "text": "Which quotation from “Ghosts of the Old Year” most effectively illustrates the claim?"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "A",
+        "text": "“The snow has ceased its fluttering flight, / The wind sunk to a whisper light, / An ominous stillness fills the night, / A pause—a hush.”"
+      },
+      {
+        "choice": "B",
+        "text": "“And so the years go swiftly by, / Each, coming, brings ambitions high, / And each, departing, leaves a sigh / Linked to the past.”"
+      },
+      {
+        "choice": "C",
+        "text": "“What does this brazen tongue declare, / That falling on the midnight air / Brings to my heart a sense of care / Akin to fright?”"
+      },
+      {
+        "choice": "D",
+        "text": "“It tells of many a squandered day, / Of slighted gems and treasured clay, / Of precious stores not laid away, / Of fields unreaped.”"
+      }
+    ],
+    "answer": "B"
   }
 ]
