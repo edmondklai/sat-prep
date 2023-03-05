@@ -7,6 +7,7 @@ import { HeaderComp } from './HeaderComp';
 import { Problem } from './Problem';
 import { TestCompleted } from './TestCompleted';
 import { useRef } from 'react';
+import { Layout } from '../components/Layout/Layout';
 
 export const Container = () => {
   const [test, setTest] = useRecoilState(testState)
@@ -16,39 +17,37 @@ export const Container = () => {
   }) => {
     if (completed) {
     } else {
-      return <span>{minutes}:{seconds}</span>;
+      return <span>{minutes}:{seconds.toString().padStart(2, '0')}</span>;
     }
   };
 
   const startDate = useRef(Date.now());
 
   return (
-    <div className="p-20">
-      <main className="flex self-center	justify-center items-center">
-        <div className="justify-between items-center flex flex-col">
+    <Layout>
+      <div className="justify-between items-center flex flex-col">
+        <>
+          <HeaderComp sectionNumber={1} />
+          <Countdown
+            date={startDate.current + 20000}
+            renderer={renderer}
+            onComplete={() => {
+              setTest((oldTest) => {
+                return { ...oldTest, completed: true }
+              })
+            }}
+          />
+          <Problem
+            problem={Problems[test.currentQuestion - 1]}
+          />
+        </>
+        {test.completed &&
           <>
-            <HeaderComp sectionNumber={1} />
-            <Countdown
-              date={startDate.current + 1000000}
-              renderer={renderer}
-              onComplete={() => {
-                setTest((oldTest) => {
-                  return { ...oldTest, completed: true }
-                })
-              }}
-            />
-            <Problem
-              problem={Problems[test.currentQuestion - 1]}
-            />
+            <TestCompleted />
           </>
-          {test.completed &&
-            <>
-              <TestCompleted />
-            </>
-          }
-          <BottomNav />
-        </div>
-      </main >
-    </div>
+        }
+        <BottomNav />
+      </div>
+    </Layout>
   )
 }
