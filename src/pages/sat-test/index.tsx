@@ -1,7 +1,12 @@
+import { AuthenticatedRoute } from "@/components/Auth/AutheticatedRoute";
 import { SatTest } from "../../components/SatTest";
 
 const SatTestPage = () => {
-  return (<SatTest />)
+  return (
+    <AuthenticatedRoute>
+      <SatTest />
+    </AuthenticatedRoute>
+  )
 }
 
 export default SatTestPage
