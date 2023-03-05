@@ -18,7 +18,6 @@ export const BottomNav = () => {
   }
 
   const calculateCorrectAnswers = () => {
-    console.log(test, Test)
     let correctAnswers = 0;
     Object.entries(test.answers).map(([key, value]) => {
       const problem = Test.find(ele => ele.number === Number(key))
