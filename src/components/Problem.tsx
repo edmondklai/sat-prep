@@ -42,7 +42,12 @@ export const Problem = ({ problem }: { problem: Problem }) => {
     <div className="flex flex-row justify-between">
       <div className="w-1/2 p-5">
         {question.map((paragraph, index) => {
-          return <div className="mb-3" key={index}>{paragraph.text}</div>
+          return (
+            <div className="mb-3" key={index}>
+              {index === 0 ? `${problem.number}. ` : ""}
+              {paragraph.text}
+            </div>
+          )
         })}
       </div>
       <div className="w-1/2 p-5">
